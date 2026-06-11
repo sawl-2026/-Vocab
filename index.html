@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAWL Read Blog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-panel" aria-label="학습 단계">
+      <div class="brand-box">
+        <img src="symbol-mark.jpg" alt="수원외국어고등학교 심볼마크" />
+        <div class="brand-title">
+          <span class="brand-sawl">SAWL</span>
+          <span class="brand-reading">Read Blog</span>
+          <small>[86쪽 4번]</small>
+        </div>
+      </div>
+
+      <nav class="todo-list">
+        <button class="todo-item active" data-step="1"><span class="star-wrap"><span class="star">★</span></span><span><b>Reading Blog 1</b><small>: 스스로 분석하기</small></span></button>
+        <button class="todo-item locked" data-step="2"><span class="star-wrap"><span class="star">★</span></span><span><b>Reading Blog 2</b><small>: 수업 필기하기</small></span></button>
+        <button class="todo-item locked" data-step="3"><span class="star-wrap"><span class="star">★</span></span><span><b>Reading Blog 3</b><small>: 지문 구조 정리하기</small></span></button>
+        <button class="todo-item locked" data-step="4"><span class="star-wrap"><span class="star">★</span></span><span><b>Reading Blog 4</b><small>: 단어 학습하기</small></span></button>
+      </nav>
+
+      <div class="side-actions">
+        <button class="side-save" id="saveProgress">저장하기</button>
+        <button class="side-reset" id="resetProgress">초기화하기</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="step-page active" id="step-1">
+        <div class="blog-heading">
+          <p>READING BLOG 1</p>
+          <h2>스스로 분석하기</h2>
+        </div>
+
+        <div class="split-layout sticky-layout">
+          <div class="left-column sticky-column">
+            <div class="passage-card sticky-passage">
+              <img src="passage-page86-no4.png" alt="86쪽 4번 영어 지문" class="passage-img" />
+            </div>
+          </div>
+          <div class="right-column">
+            <div class="analysis-list" id="analysisList"></div>
+            <div class="step-actions compact"><button class="primary-action" id="finishStep1">1단계 FINISH</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="step-page" id="step-2">
+        <div class="blog-heading">
+          <p>READING BLOG 2</p>
+          <h2>수업 필기하기</h2>
+        </div>
+        <div class="video-box">
+          <img src="lesson-video.png" alt="수업 영상 화면" />
+          <div class="play-button">▶</div>
+        </div>
+        <div class="button-row">
+          <a class="upload-button" id="uploadBtn" href="https://classroom.google.com/w/ODY3NjU5MTU2NDU1/t/allcustom" target="_blank" rel="noopener">UPLOAD</a>
+          <button class="primary-action" id="finishStep2">2단계 FINISH</button>
+        </div>
+      </section>
+
+      <section class="step-page" id="step-3">
+        <div class="blog-heading">
+          <p>READING BLOG 3</p>
+          <h2>지문 구조 정리하기</h2>
+        </div>
+
+        <div class="flow-writing">
+          <label>
+            <span><strong>인과</strong><small>(기술이 노동자의 생산력에 어떤 영향을 미쳤을까요?)</small></span>
+            <textarea></textarea>
+          </label>
+          <div class="flow-arrow">➜</div>
+          <label>
+            <span><strong>예시</strong><small>(회사에서 노동자들이 집중하지 못하는 이유는 무엇인가요?)</small></span>
+            <textarea></textarea>
+          </label>
+          <div class="flow-arrow">➜</div>
+          <label>
+            <span><strong>추가</strong><small>(새로운 기술로 인해 노동자들은 어떤 어려움을 겪게 되었나요?)</small></span>
+            <textarea></textarea>
+          </label>
+          <div class="flow-arrow">➜</div>
+          <label>
+            <span><strong>결과</strong><small>(새로운 기술 도입에 대해 노동자들은 어떻게 생각하나요?)</small></span>
+            <textarea></textarea>
+          </label>
+        </div>
+
+        <label class="topic-box"><span>주제 문장</span><textarea></textarea></label>
+        <a class="feedback-button" id="aiFeedbackBtn" href="https://chatgpt.com/g/g-6a2a4fd3ad708191b90fcbc0bdd982e8-sawl-feedback" target="_blank" rel="noopener">AI FEEDBACK</a>
+        <div class="after-feedback" id="afterFeedback" hidden>
+          <label>AI 피드백 내용<textarea></textarea></label>
+          <label>나만의 주제 문장<textarea></textarea></label>
+        </div>
+        <div class="step-actions"><button class="primary-action" id="finishStep3">3단계 FINISH</button></div>
+      </section>
+
+      <section class="step-page" id="step-4">
+        <div class="blog-heading">
+          <p>READING BLOG 4</p>
+          <h2>단어 학습하기</h2>
+        </div>
+
+        <div class="word-select" id="wordSelect"></div>
+
+        <div class="word-study" id="wordStudy" hidden>
+          <div class="flip-card" id="flipCard">
+            <div class="flip-inner">
+              <div class="flip-front">
+                <h3 id="cardWord"></h3>
+                <p id="cardMeaning"></p>
+              </div>
+              <div class="flip-back" id="cardBack"></div>
+            </div>
+          </div>
+          <div class="button-row card-buttons">
+            <button class="nav-btn" id="prevCard">이전</button>
+            <button class="nav-btn" id="nextCard">다음</button>
+          </div>
+        </div>
+
+        <div class="quiz-box" id="quizBox">
+          <button class="primary-action" id="makeQuiz">단어 퀴즈</button>
+          <div id="quizArea"></div>
+          <div id="quizResult" class="quiz-result" hidden></div>
+        </div>
+
+        <div class="step-actions"><button class="primary-action finish-btn" id="finishStep4">FINISH</button></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
